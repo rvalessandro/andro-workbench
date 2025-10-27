@@ -34,7 +34,7 @@ How to approach life and work.
 3. Work backwards: What needs to be true to get there?
 4. If you can't write a compelling story, don't build it
 
-**Example - Press Release:**
+**Example - PR/FAQ:**
 ```
 "Today we launched instant transfers. Send money in 2 seconds, not 2 days.
 Zero fees. Works 24/7."
@@ -46,7 +46,9 @@ A: [If you can't answer this compellingly, don't build it]
 
 **Example - Customer Story:**
 - Bad: "We'll improve conversion"
-- Good: "Sarah opens the app, sees her balance, taps 'Send', types $50, hits enter. Done in 8 seconds. She texts her friend: 'Did you get it?' Friend replies: 'Already here!'"
+- Good: "Sarah sends $50. Done in 8 seconds. Friend texts back: 'Already here!'"
+
+**Reference:** [Working Backwards PR/FAQ Process](https://workingbackwards.com/concepts/working-backwards-pr-faq-process/)
 
 **Why it matters:** Prevents investing in things that don't matter. Makes success tangible.
 
