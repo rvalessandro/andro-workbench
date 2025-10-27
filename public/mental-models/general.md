@@ -63,10 +63,8 @@ A: [If you can't answer this compellingly, don't build it]
 **The insight:** Best organizations, codebases, and products have the lowest WTF per minute. Low friction = high performance.
 
 **How to use it:**
-- Keep a WTF notebook (physical or digital)
-- Every time you think "WTF?" write it down with date and context
-- Review weekly: What patterns emerge?
-- Fix top 3 sources of WTFs each quarter
+- Keep a WTF notebook (physical or digital), write things down with date and context.
+- Review weekly: What patterns emerge? What's the action plan?
 
 **Example:**
 - "WTF - Why does deploy take 45 minutes? (Jan 5)"
