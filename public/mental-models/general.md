@@ -58,7 +58,7 @@ A: [If you can't answer this compellingly, don't build it]
 
 **What it is:** Track every moment of confusion, frustration, or "WTF?" Keep a notebook.
 
-**The insight:** Best organizations, codebases, and systems have the lowest WTF per minute. Low friction = high performance.
+**The insight:** Best organizations, codebases, and products have the lowest WTF per minute. Low friction = high performance.
 
 **How to use it:**
 - Keep a WTF notebook (physical or digital)
