@@ -4,7 +4,7 @@ I build tech products and teams to create meaningful impact for millions worldwi
 
 As the CEO of [Systeric](https://systeric.com), I lead transformative initiatives while contributing to other leadership roles that drive innovation.
 
-I've been fortunate to build scalable software systems for companies across diverse industries—Construction, Pharmacy, Mining, Banking, and Fintech—spanning Indonesia, Malaysia, Germany, the Netherlands, and Qatar.
+I've been fortunate to build scalable software systems for companies across diverse industries—Construction, Pharmacy, Mining, Banking, and Fintech—spanning Indonesia, Malaysia, Vietnam, Hong Kong, Japan, Germany, the Netherlands, and Qatar.
 
 Previously, I played a pivotal role in developing Asia's leading business expansion specialist, driving innovation in Product Development and ensuring compliance excellence.
 
