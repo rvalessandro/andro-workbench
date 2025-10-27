@@ -1,0 +1,85 @@
+import { defineConfig } from "vitepress";
+
+export default defineConfig({
+  title: "Operating System",
+  description: "How I run my organization",
+
+  // Only scan public folder
+  srcDir: "./public",
+
+  themeConfig: {
+    nav: [
+      { text: "Home", link: "/" },
+      { text: "Articles", link: "/articles" },
+      { text: "Mental Models", link: "/mental-models/overview" },
+      { text: "References", link: "/references" },
+    ],
+
+    sidebar: {
+      "/": [
+        {
+          text: "Mental Models",
+          items: [
+            { text: "Overview", link: "/mental-models/overview" },
+            { text: "General", link: "/mental-models/general" },
+            { text: "Product", link: "/mental-models/product" },
+            { text: "Engineering", link: "/mental-models/engineering" },
+          ],
+        },
+        {
+          text: "1:1 Framework",
+          items: [
+            { text: "Overview", link: "/1-1/framework" },
+            { text: "Quarterly 1:1", link: "/1-1/quarterly_1-1" },
+            { text: "Biweekly 1:1", link: "/1-1/biweekly_1-1" },
+          ],
+        },
+        {
+          text: "Retrospectives",
+          items: [
+            { text: "Framework", link: "/retrospectives/framework" },
+            { text: "Project/Issue", link: "/retrospectives/project-issue" },
+            {
+              text: "Quarterly Review",
+              link: "/retrospectives/quarterly-review",
+            },
+          ],
+        },
+        {
+          text: "Career Levels",
+          items: [
+            { text: "Overview", link: "/levels/overview" },
+            {
+              text: "Software Engineer",
+              link: "/levels/software-engineer-levels",
+            },
+            { text: "Product Manager", link: "/levels/product-manager-levels" },
+          ],
+        },
+        {
+          text: "Quarterly Planning",
+          items: [
+            { text: "Rock Sizing", link: "/quarterly-planning/rock-sizing" },
+            { text: "DRI Responsibilities", link: "/quarterly-planning/dri-responsibilities" },
+            { text: "DRI Weekly Sync", link: "/quarterly-planning/dri-weekly-sync" },
+          ],
+        },
+        {
+          text: "References",
+          items: [
+            { text: "All References", link: "/references" },
+          ],
+        },
+      ],
+    },
+
+    search: {
+      provider: "local",
+      options: {
+        // Only search public folder (default since srcDir is public)
+      },
+    },
+
+    socialLinks: [{ icon: "github", link: "https://github.com/yourusername" }],
+  },
+});
