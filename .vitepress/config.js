@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 
 export default defineConfig({
   title: "rvalessandro",
-  description: "How I run my organization",
+  description: "How I think and work",
 
   // Only scan public folder
   srcDir: "./public",
