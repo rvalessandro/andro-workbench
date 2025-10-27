@@ -1,17 +1,7 @@
----
-layout: home
+# Operating System
 
-hero:
-  name: "Operating System"
-  text: "How I run my organization"
-  tagline: Frameworks for building products and teams.
-  actions:
-    - theme: brand
-      text: Articles
-      link: /articles
-    - theme: alt
-      text: Mental Models
-      link: /mental-models/overview
+How I run my organization.
+
 ---
 
 ## About
@@ -22,6 +12,16 @@ This site documents frameworks I use for 1:1s, retrospectives, career levels, an
 
 ---
 
-## Connect {#connect}
+## Sections
+
+**[Articles](/articles)** - 1:1s, retrospectives, career levels, quarterly planning
+
+**[Mental Models](/mental-models/overview)** - How to think about life, products, and engineering
+
+**[References](/references)** - Articles I refer to often
+
+---
+
+## Connect
 
 [LinkedIn](https://linkedin.com/in/yourusername) • [Email](mailto:your@email.com)
