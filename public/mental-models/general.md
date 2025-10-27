@@ -8,6 +8,7 @@ How to approach life and work.
 
 **Mindset:**
 - Begin with the end in mind - Paint the picture, write the PR/FAQ, work backwards
+- WTF per minute - Track friction, reduce it
 - Compound yourself - Exponential, not linear
 - Have self-belief - Trust yourself on big bets
 - Think independently - Test ideas, not opinions
@@ -50,6 +51,32 @@ A: [If you can't answer this compellingly, don't build it]
 **Why it matters:** Prevents investing in things that don't matter. Makes success tangible.
 
 **When to use:** Every project, every quarter, every major decision.
+
+---
+
+## WTF per Minute
+
+**What it is:** Track every moment of confusion, frustration, or "WTF?" Keep a notebook.
+
+**The insight:** Best organizations, codebases, and systems have the lowest WTF per minute. Low friction = high performance.
+
+**How to use it:**
+- Keep a WTF notebook (physical or digital)
+- Every time you think "WTF?" write it down with date and context
+- Review weekly: What patterns emerge?
+- Fix top 3 sources of WTFs each quarter
+
+**Example:**
+- "WTF - Why does deploy take 45 minutes? (Jan 5)"
+- "WTF - Why do I need 3 approvals for $50 expense? (Jan 7)"
+- "WTF - Why is this API response format inconsistent? (Jan 10)"
+- Pattern: Process friction. Fix: Automate deploys, raise approval threshold to $500, standardize API responses.
+
+**Why it matters:** Friction compounds. Every WTF wastes time, energy, and morale. Reduce WTFs, increase velocity.
+
+**When to use:** Daily. Make it a habit. Best teams review WTFs in retrospectives.
+
+**Reference:** [Why You Need a WTF Notebook](https://www.simplermachines.com/why-you-need-a-wtf-notebook/)
 
 ---
 
