@@ -12,4 +12,4 @@ Previously, I played a pivotal role in developing Asia's leading business expans
 
 ## Connect
 
-You can add me on [LinkedIn](https://linkedin.com/in/yourusername), or reach out via [Email](mailto:your@email.com) to discuss your ideas. I'm always eager to connect, share insights, and explore opportunities to make a difference.
+You can add me on [LinkedIn](https://linkedin.com/in/rvalessandro), or reach out via [Email](mailto:andro@systeric.com) to discuss your ideas. I'm always eager to connect, share insights, and explore opportunities to make a difference.
