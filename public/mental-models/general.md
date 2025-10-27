@@ -8,6 +8,7 @@ How to approach life and work.
 
 **Mindset:**
 - Begin with the end in mind - Paint the picture, write the PR/FAQ, work backwards
+- Check your motives - Expose hidden pride, ego, greed, fear
 - WTF per minute - Track friction, reduce it
 - Compound yourself - Exponential, not linear
 - Have self-belief - Trust yourself on big bets
@@ -53,6 +54,43 @@ A: [If you can't answer this compellingly, don't build it]
 **Why it matters:** Prevents investing in things that don't matter. Makes success tangible.
 
 **When to use:** Every project, every quarter, every major decision.
+
+---
+
+## Check Your Motives
+
+**What it is:** A set of questions to expose whether you're acting from pure or impure motives.
+
+**The insight:** Hidden motives corrupt good work. Pride, ego, greed, and fear disguise themselves as good intentions. These questions expose them.
+
+**How to use it:**
+- Before major decisions, answer these questions honestly
+- If you answer "No" to any pure motive question, stop and examine why
+- Pure motives: Would do it anonymously, willing to not get credit, can celebrate others' success
+- Impure motives: Need recognition, glory, to be right, to prove something
+
+**The Questions:**
+
+| **Question** | **Pure Motive** | **Impure Motive** |
+|--------------|-----------------|-------------------|
+| Would I do this if no one ever knew? | Yes | No (seeking recognition) |
+| Am I willing to not get credit? | Yes | No (seeking glory) |
+| Can I rejoice if someone else succeeds instead? | Yes | No (jealous/competitive) |
+| Would I do this if it cost me reputation? | Yes | No (fear of man) |
+| Am I defensive when questioned? | No | Yes (pride protecting itself) |
+| Do I need to be right? | No | Yes (ego-driven) |
+| Does this serve others or myself? | Others (primarily) | Self (primarily) |
+| Am I doing this to prove something? | No | Yes (insecurity) |
+| Would I do this if I lost money? | Yes | No (greed) |
+| Can I submit this decision to godly counsel? | Yes | No (hiding something) |
+
+**Example:**
+- Bad: "I want to write this blog post to show everyone I'm an expert" (seeking recognition, ego-driven)
+- Good: "I want to write this blog post because it will help people solve X problem, even if no one knows I wrote it" (serves others, willing to not get credit)
+
+**Why it matters:** Impure motives eventually corrupt everything. Pride leads to bad decisions. Fear of man prevents bold action. Greed creates shortcuts. Pure motives create sustainable impact.
+
+**When to use:** Before major decisions, when starting new projects, during retrospectives, when you feel defensive.
 
 ---
 
