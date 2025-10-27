@@ -82,11 +82,23 @@ A: [If you can't answer this compellingly, don't build it]
 | Does this serve others or myself? | Others (primarily) | Self (primarily) |
 | Am I doing this to prove something? | No | Yes (insecurity) |
 | Would I do this if I lost money? | Yes | No (greed) |
-| Can I submit this decision to godly counsel? | Yes | No (hiding something) |
+| Can I openly share my reasoning with trusted advisors? | Yes | No (hiding something) |
 
-**Example:**
-- Bad: "I want to write this blog post to show everyone I'm an expert" (seeking recognition, ego-driven)
-- Good: "I want to write this blog post because it will help people solve X problem, even if no one knows I wrote it" (serves others, willing to not get credit)
+**Example 1: Leading a project**
+
+"I want to lead this high-profile project because..."
+
+- **Impure (hidden)**: "...it will prove to leadership that I'm VP material. If Sarah gets it instead, it shows they don't value my work." (Proving something, jealous/competitive, need recognition)
+
+- **Pure**: "...I have unique expertise in this area that will help us ship 2 months faster. If Sarah can do it better, I'd be thrilled to support her as a contributor." (Serves others, willing to not get credit, can celebrate others' success)
+
+**Example 2: Giving feedback**
+
+"I want to give this feedback to my teammate because..."
+
+- **Impure (hidden)**: "...they made me look bad in the meeting and I need to establish that I'm right. When questioned, I get defensive because they should just accept my expertise." (Ego-driven, pride protecting itself, need to be right)
+
+- **Pure**: "...this pattern will hurt their career growth. I'd give the same feedback even if no one knew it came from me, and I'm open to them challenging my perspective." (Serves others, would do anonymously, not defensive)
 
 **Why it matters:** Impure motives eventually corrupt everything. Pride leads to bad decisions. Fear of man prevents bold action. Greed creates shortcuts. Pure motives create sustainable impact.
 
