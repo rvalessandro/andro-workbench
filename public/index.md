@@ -1,14 +1,12 @@
-# Operating System
+# Hi, I'm Andro
 
-How I run my organization.
+I build tech products and teams to create meaningful impact for millions worldwide.
 
----
+As the CEO of Systeric, I lead transformative initiatives while contributing to other leadership roles that drive innovation.
 
-## About
+I've been fortunate to build scalable software systems for companies across diverse industries—Construction, Pharmacy, Mining, Banking, and Fintech—spanning Indonesia, Malaysia, Germany, the Netherlands, and Qatar.
 
-I build scalable software systems across Construction, Pharmacy, Mining, Banking, and Fintech in Indonesia, Malaysia, Germany, the Netherlands, and Qatar.
-
-This site documents frameworks I use for 1:1s, retrospectives, career levels, and thinking tools.
+Previously, I played a pivotal role in developing Asia's leading business expansion specialist, driving innovation in Product Development and ensuring compliance excellence.
 
 ---
 
@@ -24,4 +22,4 @@ This site documents frameworks I use for 1:1s, retrospectives, career levels, an
 
 ## Connect
 
-[LinkedIn](https://linkedin.com/in/yourusername) • [Email](mailto:your@email.com)
+You can add me on [LinkedIn](https://linkedin.com/in/yourusername), or reach out via [Email](mailto:your@email.com) to discuss your ideas. I'm always eager to connect, share insights, and explore opportunities to make a difference.
