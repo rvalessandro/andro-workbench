@@ -1,7 +1,7 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-  title: "Operating System",
+  title: "rvalessandro",
   description: "How I run my organization",
 
   // Only scan public folder
