@@ -74,7 +74,7 @@ A: [If you can't answer this compellingly, don't build it]
 | **Question** | **Pure Motive** | **Impure Motive** |
 |--------------|-----------------|-------------------|
 | Would I do this if no one ever knew? | Yes | No (seeking recognition) |
-| Am I willing to not get credit? | Yes | No (seeking glory) |
+| Am I willing to not get credit? | Yes | No (seeking praise) |
 | Can I rejoice if someone else succeeds instead? | Yes | No (jealous/competitive) |
 | Would I do this if it cost me reputation? | Yes | No (fear of man) |
 | Am I defensive when questioned? | No | Yes (pride protecting itself) |
