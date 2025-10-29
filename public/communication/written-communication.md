@@ -218,6 +218,29 @@ Two proven frameworks from military (BLUF) and consulting (Minto Pyramid):
 
 ---
 
+### Pattern 6: Vague Status Updates
+
+**What it looks like:** Updates that lack context, clear status, or actionable next steps.
+
+> "Milestones updated due team member need to switch to other projects. M2: Still on development. M3: Start Oct 29. Stage test: Nov 4."
+
+**Why it fails:** Reader can't tell:
+- Is this on track or delayed?
+- What help is needed?
+- What changed and why?
+- What action should they take?
+
+**Fix:** Give context, state impact, clear ask.
+> "Payments Malaysia delayed 2 weeks (Jan 15 → Jan 29). Sarah switched to Supply project (CEO priority). Impact: Q1 revenue target drops $50K. Need decision: hire contractor ($15K) to stay on Jan 15, or accept Jan 29 date?"
+
+**What changed:**
+- Clear timeline change (2 weeks delayed)
+- Specific reason (Sarah to Supply, CEO priority)
+- Business impact ($50K revenue)
+- Clear decision needed with options and costs
+
+---
+
 ## Putting It Together
 
 **Before sending any message, ask:**

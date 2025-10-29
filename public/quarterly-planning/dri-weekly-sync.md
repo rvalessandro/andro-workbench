@@ -48,20 +48,20 @@ Weekly meeting for DRIs to stay on track.
 **Sarah (DRI: Payments)**
 
 **Launch Payments in Malaysia**
-- **Current Status:** API done. Frontend 60% complete. Testing blocked on sandbox access.
+- **Current Status:** On track for Jan 15 launch. API done. Frontend 60% complete (was 40% last week). Testing blocked on sandbox access.
 - **Blockers:**
-  - Sandbox delayed 1 week → Use mock data for frontend → Dev team using mocks, sandbox Friday
-- **Insights:** Mock data working well. Should do by default. Contract signing took 3 weeks longer than expected. Start legal reviews 1 month earlier.
+  - Sandbox delayed 1 week (vendor issue) → Using mock data for frontend dev → Dev team has mocks, real sandbox arrives Friday. No launch impact.
+- **Insights:** Mock data strategy working well—frontend dev continued without blocking. Should do by default. Contract signing took 3 weeks longer than expected (2 weeks vs 5 weeks). Start legal reviews 1 month earlier next time.
 
 ---
 
 **Alex (DRI: Fraud Detection)**
 
 **Implement Fraud Scoring**
-- **Current Status:** Model training complete. Checkout integration in progress. Launch Jan 15.
+- **Current Status:** On track for Jan 15 launch. Model training complete. Checkout integration 70% done (was 30% last week).
 - **Blockers:**
-  - False positive rate 8% (target <5%) → Add user behavior features → Data team pulling features, retraining this week
-- **Insights:** Should have included data team earlier (lost 1 week). Feature flags working great. Rolling out to 1% Friday.
+  - False positive rate 8%, need <5% for launch → Adding user behavior features (session time, device fingerprint) → Data team pulling features today, retraining Wed. If rate stays >5%, push launch 1 week.
+- **Insights:** Should have included data team in kickoff (lost 1 week on feature discussion). Feature flags working great—rolling out to 1% Friday for real-world testing before full launch.
 
 ---
 
@@ -118,4 +118,30 @@ Team gets demoralized.
 
 ---
 
-Related: [Rock Sizing](/quarterly-planning/rock-sizing) • [DRI Responsibilities](/quarterly-planning/dri-responsibilities)
+**Mistake 5: Vague Status Updates**
+
+**What it looks like:**
+> "Milestones updated due team member need to switch to other projects. M2: Still on development. M3: Start Oct 29. Stage test: Nov 4."
+
+**Why it fails:**
+- Can't tell if on track or delayed
+- No context on what changed or why
+- No clear impact or ask
+- Reader has to guess what help is needed
+
+**Fix:** State track status, give context, show impact, clear ask.
+
+**Good version:**
+> "Payments Malaysia delayed 2 weeks (Jan 15 → Jan 29). Sarah switched to Supply project (CEO priority). Impact: Q1 revenue target drops $50K. Need decision: hire contractor ($15K) to stay on Jan 15, or accept Jan 29 date?"
+
+**What makes it good:**
+- Clear status: "delayed 2 weeks"
+- Specific dates: "Jan 15 → Jan 29"
+- Reason with context: "Sarah to Supply (CEO priority)"
+- Business impact: "$50K revenue drop"
+- Clear decision needed: "hire contractor or accept delay?"
+- Specific numbers: "$15K contractor cost"
+
+---
+
+Related: [Rock Sizing](/quarterly-planning/rock-sizing) • [DRI Responsibilities](/quarterly-planning/dri-responsibilities) • [Written Communication](/communication/written-communication)
