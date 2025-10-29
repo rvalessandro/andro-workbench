@@ -54,9 +54,13 @@ Rock sizing, DRI ownership, and weekly sync format for staying on track.
 
 ## Communication
 
-Write clearly, get to the point, avoid weasel words.
+Two frameworks for clear, empathetic communication.
 
-**[Written Communication](/communication/written-communication)** - BLUF, Minto Pyramid, no weasel words
+**[Overview](/communication/overview)** - How the frameworks work together
+
+**[Written Communication](/communication/written-communication)** - Structure your thinking and get to the point
+
+**[Feedback & Difficult Conversations](/communication/feedback-and-difficult-conversations)** - Care personally and challenge directly
 
 ---
 

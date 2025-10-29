@@ -67,7 +67,9 @@ export default defineConfig({
         {
           text: "Communication",
           items: [
+            { text: "Overview", link: "/communication/overview" },
             { text: "Written Communication", link: "/communication/written-communication" },
+            { text: "Feedback & Difficult Conversations", link: "/communication/feedback-and-difficult-conversations" },
           ],
         },
         {
