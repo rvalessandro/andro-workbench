@@ -14,6 +14,21 @@ The goal: give you frameworks that help you make better decisions, approach prob
 
 ---
 
+## The Framework
+
+### [How to be Successful](/mental-models/how-to-be-successful)
+
+Three principles for building leverage, developing taste, and taking action.
+
+**Key concepts:**
+- Focus on leverage - Find the domino that knocks down the rest
+- Develop taste - AI can execute, you need judgment
+- Bias for action - Ship fast, but balance with leverage
+
+**When to use:** Building products, scaling teams, making strategic decisions.
+
+---
+
 ## Three Domains
 
 ### [General](/mental-models/general)
@@ -24,7 +39,7 @@ How to approach life and work.
 - Begin with the end in mind - Paint the picture before you build
 - Compound yourself - Seek exponential growth
 - Focus - One thing that matters
-- Build leverage - Skills + relationships + ownership
+- Check your motives - Pure motives enable honest work
 
 **When to use:** Daily decisions, career choices, life direction.
 

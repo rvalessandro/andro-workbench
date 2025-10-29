@@ -18,7 +18,6 @@ How to approach life and work.
 - Work hard - Outwork early, out-think later
 - Be bold - Tackle hard problems
 - Be willful - Make things happen
-- Build leverage - Unique skills + relationships
 - Build network - Help generously
 - Own things - Equity beats salary
 - Be internally driven - Do what matters to you
@@ -259,22 +258,6 @@ A: [If you can't answer this compellingly, don't build it]
 "Messaged the CEO 5 times before he replied. Now he's our biggest customer."
 
 **When to use:** Overcoming obstacles, closing deals, recruiting.
-
----
-
-## Build Leverage
-
-**What it is:** Do work that can't be replicated.
-
-**How to use it:**
-- Combine unique skills (e.g., engineering + design + sales)
-- Build brand and relationships
-- Own the customer relationship
-
-**Example:**
-"Only person who can code payments AND speak to banks AND sell to CFOs = hard to replace."
-
-**When to use:** Career planning, skill development.
 
 ---
 

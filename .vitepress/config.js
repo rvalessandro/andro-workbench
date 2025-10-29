@@ -26,6 +26,7 @@ export default withMermaid(
           text: "Mental Models",
           items: [
             { text: "Overview", link: "/mental-models/overview" },
+            { text: "How to be Successful", link: "/mental-models/how-to-be-successful" },
             { text: "General", link: "/mental-models/general" },
             { text: "Product", link: "/mental-models/product" },
             { text: "Engineering", link: "/mental-models/engineering" },
