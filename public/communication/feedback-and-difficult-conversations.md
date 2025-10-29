@@ -278,8 +278,8 @@ See [Check Your Motives](/mental-models/general#check-your-motives) for the full
 - Difficult conversations where emotions are high
 
 **Don't use for:**
-- Emergencies ("Stop. The build is broken.")
-- Simple requests ("Can you review my PR?")
+- Urgent issues that need immediate action ("Production is down. Let's hop on a call to debug.")
+- Simple requests ("Can you review my PR by 3pm?")
 - Status updates (use [Written Communication](/communication/written-communication))
 
 ---
