@@ -1,6 +1,6 @@
 # Articles
 
-Frameworks for 1:1s, retrospectives, career levels, and quarterly planning.
+Frameworks for 1:1s, retrospectives, career levels, quarterly planning, and communication.
 
 ---
 
@@ -49,6 +49,14 @@ Rock sizing, DRI ownership, and weekly sync format for staying on track.
 **[DRI Responsibilities](/quarterly-planning/dri-responsibilities)** - What it means to own an initiative
 
 **[DRI Weekly Sync](/quarterly-planning/dri-weekly-sync)** - Template for weekly DRI updates
+
+---
+
+## Communication
+
+Write clearly, get to the point, avoid weasel words.
+
+**[Written Communication](/communication/written-communication)** - BLUF, Minto Pyramid, no weasel words
 
 ---
 

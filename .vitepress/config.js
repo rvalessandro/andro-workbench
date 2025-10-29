@@ -65,6 +65,12 @@ export default defineConfig({
           ],
         },
         {
+          text: "Communication",
+          items: [
+            { text: "Written Communication", link: "/communication/written-communication" },
+          ],
+        },
+        {
           text: "References",
           items: [
             { text: "All References", link: "/references" },
