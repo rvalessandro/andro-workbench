@@ -1,11 +1,16 @@
 import { defineConfig } from "vitepress";
+import { withMermaid } from "vitepress-plugin-mermaid";
 
-export default defineConfig({
-  title: "rvalessandro",
-  description: "How I think and work",
+export default withMermaid(
+  defineConfig({
+    title: "rvalessandro",
+    description: "How I think and work",
 
-  // Only scan public folder
-  srcDir: "./public",
+    // Only scan public folder
+    srcDir: "./public",
+
+    // Mermaid configuration
+    mermaid: {},
 
   themeConfig: {
     nav: [
@@ -90,4 +95,4 @@ export default defineConfig({
 
     socialLinks: [{ icon: "github", link: "https://github.com/yourusername" }],
   },
-});
+}));
