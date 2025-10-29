@@ -36,18 +36,15 @@ Most feedback fails because we either:
 
 ## The Radical Candor Matrix
 
-```
-                    Challenge Directly
-                            ↑
-                            |
-    Obnoxious        |      Radical
-    Aggression       |      Candor
-                     |
-────────────────────┼────────────────────→ Care Personally
-                     |
-    Manipulative     |      Ruinous
-    Insincerity      |      Empathy
-                     |
+```mermaid
+quadrantChart
+    title Radical Candor Matrix
+    x-axis Low Care --> High Care
+    y-axis Low Challenge --> High Challenge
+    quadrant-1 Radical Candor
+    quadrant-2 Obnoxious Aggression
+    quadrant-3 Manipulative Insincerity
+    quadrant-4 Ruinous Empathy
 ```
 
 **The quadrants:**
