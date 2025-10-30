@@ -68,9 +68,10 @@ You spend all your tokens on tech. No tokens left for product innovation. And wh
 |-------------------|-------------------|
 | Postgres | MongoDB (when you don't need it), CockroachDB (when Postgres works) |
 | Redis | Some new in-memory DB you read about |
+| Rails/Django/NestJS | New framework in a new language |
 | REST APIs | GraphQL (unless you actually need it) |
 | Monolith first | Microservices from day 1 |
-| EC2/Heroku | Kubernetes (when you have 2 engineers) |
+| Heroku/DigitalOcean | Kubernetes (when you have 2 engineers) |
 
 **When to use shiny tech:**
 - You have a specific problem boring tech can't solve
@@ -512,7 +513,17 @@ Master 1 (Read/Write) <-> Replicate <-> Master 2 (Read/Write)
 - **Isolation:** Concurrent transactions don't interfere
 - **Durability:** Once committed, data is safe
 
-**Example:**
+**Use case: Transfer money between accounts**
+
+Without transaction:
+```javascript
+// Bad: What if second update fails?
+await db.query('UPDATE accounts SET balance = balance - 100 WHERE id = 1');
+// Power outage here = money disappears!
+await db.query('UPDATE accounts SET balance = balance + 100 WHERE id = 2');
+```
+
+With transaction:
 ```sql
 BEGIN TRANSACTION;
   UPDATE accounts SET balance = balance - 100 WHERE id = 1;
@@ -522,25 +533,63 @@ COMMIT;
 -- If either fails, both roll back. No partial transfers.
 ```
 
-**When to use:** Operations that must succeed together (transfers, order + payment)
+**When to use:** Operations that must succeed together (transfers, order + payment, inventory + order)
 
 ### Outbox Pattern
 
 **The problem:** Update DB + send event. DB succeeds, event fails. Now they're out of sync.
 
-**The solution:**
-```sql
-BEGIN TRANSACTION;
-  INSERT INTO orders (user_id, amount) VALUES (1, 100);
-  INSERT INTO outbox (event_type, payload) VALUES ('order_created', '{"order_id": 123}');
-COMMIT;
+**Use case: Complete order + capture payment in background**
 
--- Separate process reads outbox and sends events
+Problem without outbox:
+```javascript
+// Bad: What if Stripe is slow or fails?
+await db.query('UPDATE orders SET status = "completed" WHERE id = ?', [orderId]);
+await stripe.charges.capture(chargeId); // Slow! Times out! User waiting...
+// If this fails, order is completed but payment not captured
 ```
 
-**Why it works:** DB write + outbox write are atomic. If one fails, both fail.
+Solution with outbox:
+```sql
+BEGIN TRANSACTION;
+  -- Mark order completed
+  UPDATE orders SET status = 'completed' WHERE id = 123;
 
-**When to use:** Updating DB + sending events/webhooks/messages
+  -- Queue payment capture for background processing
+  INSERT INTO outbox (event_type, payload)
+  VALUES ('capture_payment', '{"order_id": 123, "charge_id": "ch_123"}');
+COMMIT;
+
+-- Background worker processes outbox
+-- User gets instant response, payment captured in background
+```
+
+Background worker:
+```javascript
+// Runs every second
+async function processOutbox() {
+  const events = await db.query('SELECT * FROM outbox WHERE processed = false LIMIT 10');
+
+  for (const event of events) {
+    if (event.event_type === 'capture_payment') {
+      const { order_id, charge_id } = JSON.parse(event.payload);
+      await stripe.charges.capture(charge_id);
+      await db.query('UPDATE outbox SET processed = true WHERE id = ?', [event.id]);
+    }
+  }
+}
+```
+
+**Why it works:**
+- DB write + outbox write are atomic (both succeed or both fail)
+- User gets instant response (no waiting for Stripe)
+- Payment captured reliably in background
+- If capture fails, retry from outbox
+
+**When to use:**
+- Slow external APIs (Stripe, webhooks, email)
+- Update DB + send events/messages
+- Need guaranteed delivery
 
 ### Idempotency
 
@@ -622,6 +671,34 @@ function addCredit(userId, amount, idempotencyKey) {
 }
 ```
 
+**Use case: Retry Stripe payment capture from outbox**
+
+```javascript
+async function processOutbox() {
+  const events = await db.query('SELECT * FROM outbox WHERE processed = false');
+
+  for (const event of events) {
+    if (event.event_type === 'capture_payment') {
+      const { charge_id } = JSON.parse(event.payload);
+
+      // Use event ID as idempotency key
+      // If worker crashes and retries, won't double-capture
+      await stripe.charges.capture(charge_id, {
+        idempotencyKey: event.id
+      });
+
+      await db.query('UPDATE outbox SET processed = true WHERE id = ?', [event.id]);
+    }
+  }
+}
+```
+
+**Why it matters here:**
+- Worker might crash after capturing but before marking processed
+- Worker retries same event
+- Idempotency key prevents double-capture
+- Stripe returns cached result from first capture
+
 **When to use:**
 - Payments (must not double-charge)
 - Account operations (credits, debits)
@@ -634,15 +711,51 @@ function addCredit(userId, amount, idempotencyKey) {
 
 **What it is:** Queue for messages that failed processing.
 
-**Flow:**
-```
-Queue -> Process -> Success
-               \ -> Retry (3x) -> Still fails -> Dead Letter Queue
+**Use case: Failed payment captures**
+
+```javascript
+async function processOutbox() {
+  const events = await db.query('SELECT * FROM outbox WHERE processed = false');
+
+  for (const event of events) {
+    let retries = event.retry_count || 0;
+
+    try {
+      if (event.event_type === 'capture_payment') {
+        const { charge_id } = JSON.parse(event.payload);
+        await stripe.charges.capture(charge_id, { idempotencyKey: event.id });
+        await db.query('UPDATE outbox SET processed = true WHERE id = ?', [event.id]);
+      }
+    } catch (error) {
+      retries++;
+
+      if (retries >= 3) {
+        // Move to dead letter queue after 3 retries
+        await db.query(`
+          INSERT INTO dead_letter_queue (event_type, payload, error, original_event_id)
+          VALUES (?, ?, ?, ?)
+        `, [event.event_type, event.payload, error.message, event.id]);
+
+        await db.query('UPDATE outbox SET processed = true WHERE id = ?', [event.id]);
+
+        // Alert team
+        await slack.send(`Payment capture failed after 3 retries: Order ${event.payload.order_id}`);
+      } else {
+        // Increment retry count
+        await db.query('UPDATE outbox SET retry_count = ? WHERE id = ?', [retries, event.id]);
+      }
+    }
+  }
+}
 ```
 
-**Why it matters:** Don't lose failed messages. Investigate and replay them later.
+**Why it matters:**
+- Payment capture might fail (card issues, Stripe downtime)
+- Don't retry forever (infinite loop)
+- Don't lose failed payments (investigate manually)
+- Alert team to fix issues
 
-**When to use:** Background job processing, event handling
+**When to use:** Background job processing, event handling, webhook delivery
 
 ### Retries and Backoff
 
@@ -850,44 +963,56 @@ git push
 
 **The problem:** Moving from System A to System B. Can't switch instantly.
 
+**Use case: Migrate user data from Postgres to MongoDB**
+
+You're outgrowing Postgres for user profiles (need flexible schema). Want to move to MongoDB. But have 1M users and can't take downtime.
+
 **The solution:**
 ```
-Phase 1: Write to A (old)
-Phase 2: Write to A + B (dual write)
-Phase 3: Read from A, backfill B
-Phase 4: Read from B, write to A + B
-Phase 5: Write to B only (old system retired)
+Phase 1: Write to Postgres (old)
+Phase 2: Write to Postgres + MongoDB (dual write)
+Phase 3: Read from Postgres, backfill MongoDB
+Phase 4: Read from MongoDB, write to Postgres + MongoDB
+Phase 5: Write to MongoDB only (Postgres retired)
 ```
-
-**Example: Migrating from MySQL to Postgres**
 
 ```javascript
-// Phase 2: Dual write
-function createUser(data) {
-  await mysql.insert('users', data);
-  await postgres.insert('users', data); // Also write to new DB
-}
-
-// Phase 3: Backfill
-// Run script to copy all existing data from MySQL to Postgres
-
-// Phase 4: Read from new, write to both
-function getUser(id) {
-  return await postgres.query('SELECT * FROM users WHERE id = ?', [id]);
-}
-
-function createUser(data) {
-  await postgres.insert('users', data); // Primary
-  await mysql.insert('users', data);    // Keep old in sync
-}
-
-// Phase 5: Stop writing to MySQL
-function createUser(data) {
+// Phase 2: Dual write (write to both)
+async function createUser(data) {
   await postgres.insert('users', data);
+  await mongodb.collection('users').insertOne(data); // Also write to MongoDB
+}
+
+// Phase 3: Backfill existing data
+// Run background script to copy 1M users from Postgres to MongoDB
+async function backfillUsers() {
+  const users = await postgres.query('SELECT * FROM users');
+  for (const user of users) {
+    await mongodb.collection('users').insertOne(user);
+  }
+}
+
+// Phase 4: Read from MongoDB, write to both
+async function getUser(id) {
+  return await mongodb.collection('users').findOne({ id }); // Read from MongoDB now
+}
+
+async function createUser(data) {
+  await mongodb.collection('users').insertOne(data); // Primary
+  await postgres.insert('users', data);              // Keep Postgres in sync for rollback
+}
+
+// Phase 5: Stop writing to Postgres (migration complete)
+async function createUser(data) {
+  await mongodb.collection('users').insertOne(data);
 }
 ```
 
-**Why it works:** Each phase is safe. Can rollback at any point.
+**Why it works:**
+- Each phase is safe and reversible
+- Can rollback at any point (just switch reads back)
+- No downtime
+- New and old data stay in sync
 
 ### Expand-Contract Pattern
 
