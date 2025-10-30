@@ -71,12 +71,17 @@ You spend all your tokens on tech. No tokens left for product innovation. And wh
 | NestJS/Spring Boot | New framework in a new language |
 | REST APIs | GraphQL (unless you actually need it) |
 | Monolith first | Microservices from day 1 |
-| Heroku/DigitalOcean | Kubernetes (when you have 2 engineers) |
+| DigitalOcean | Kubernetes (unless you need multi-region or complex orchestration) |
 
 **When to use shiny tech:**
 - You have a specific problem boring tech can't solve
 - You have capacity to learn and debug it
 - You've used boring tech everywhere else
+
+**Example: When to use Kubernetes**
+- **Don't use:** Single region, <10 services, simple deployment
+- **Do use:** Multi-region, 50+ microservices, complex networking, need fine-grained control
+- **Reality:** Most startups don't need it. DigitalOcean solves 90% of cases.
 
 **The rule:** Be boring everywhere except where you need to innovate.
 
