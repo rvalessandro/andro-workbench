@@ -544,7 +544,49 @@ COMMIT;
 
 ### Idempotency
 
-**What it is:** Operation can be repeated safely.
+**What it is:** Operation can be repeated safely with same result.
+
+**The insight:** Network requests can fail, timeout, or be sent multiple times. Idempotency ensures retrying doesn't cause duplicate operations.
+
+**How Stripe does it:**
+
+Clients send an `Idempotency-Key` header:
+```javascript
+fetch('/api/payments', {
+  method: 'POST',
+  headers: {
+    'Idempotency-Key': 'a7f8d9e1-3b2c-4f6a-9d8e-1c2b3a4f5e6d' // UUID
+  },
+  body: JSON.stringify({ amount: 1000, currency: 'usd' })
+});
+```
+
+Server saves result by key:
+```javascript
+async function processPayment(data, idempotencyKey) {
+  // Check if already processed
+  const cached = await redis.get(`idempotency:${idempotencyKey}`);
+  if (cached) return JSON.parse(cached);
+
+  // Process payment
+  const result = await stripe.charges.create(data);
+
+  // Save result for 24 hours
+  await redis.setex(
+    `idempotency:${idempotencyKey}`,
+    86400,
+    JSON.stringify(result)
+  );
+
+  return result;
+}
+```
+
+**Key practices:**
+- Use V4 UUIDs for idempotency keys (enough entropy to avoid collisions)
+- Keys valid for 24 hours (Stripe's approach)
+- Only for POST requests (GET/DELETE already idempotent)
+- Compare incoming parameters to original (error if different)
 
 **Example:**
 ```javascript
@@ -555,18 +597,38 @@ function addCredit(userId, amount) {
   await saveUser(user);
 }
 
-// Good: Idempotent
-function addCredit(userId, amount, requestId) {
-  if (await alreadyProcessed(requestId)) return;
+// Good: Idempotent with key
+function addCredit(userId, amount, idempotencyKey) {
+  // Check if already processed
+  const cached = await redis.get(`idempotency:${idempotencyKey}`);
+  if (cached) return JSON.parse(cached);
 
+  // Verify parameters match if key exists
+  const existing = await getRequestByKey(idempotencyKey);
+  if (existing && (existing.userId !== userId || existing.amount !== amount)) {
+    throw new Error('Parameters mismatch for idempotency key');
+  }
+
+  // Process
   const user = await getUser(userId);
   user.credits += amount;
   await saveUser(user);
-  await markProcessed(requestId);
+
+  // Save result
+  const result = { userId, newBalance: user.credits };
+  await redis.setex(`idempotency:${idempotencyKey}`, 86400, JSON.stringify(result));
+
+  return result;
 }
 ```
 
-**When to use:** Any operation that might retry (payments, API calls)
+**When to use:**
+- Payments (must not double-charge)
+- Account operations (credits, debits)
+- External API calls
+- Any operation that retries
+
+**Reference:** [Stripe Idempotent Requests](https://docs.stripe.com/api/idempotent_requests)
 
 ### Dead Letter Queue (DLQ)
 
