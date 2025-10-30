@@ -68,7 +68,7 @@ You spend all your tokens on tech. No tokens left for product innovation. And wh
 |-------------------|-------------------|
 | Postgres | MongoDB (when you don't need it), CockroachDB (when Postgres works) |
 | Redis | Some new in-memory DB you read about |
-| Rails/Django/NestJS | New framework in a new language |
+| NestJS/Spring Boot | New framework in a new language |
 | REST APIs | GraphQL (unless you actually need it) |
 | Monolith first | Microservices from day 1 |
 | Heroku/DigitalOcean | Kubernetes (when you have 2 engineers) |
