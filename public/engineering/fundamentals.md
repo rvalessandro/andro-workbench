@@ -439,13 +439,33 @@ User -> Load Balancer -> Route /api/users to [API Servers]
 
 **Vertical (Scale Up):** Bigger server (more CPU/RAM)
 - **Pros:** Simple, no code changes
-- **Cons:** Expensive, has limits (can't buy infinite RAM)
+- **Cons:** Expensive (doubles every tier), has limits (can't buy infinite RAM)
 
 **Horizontal (Scale Out):** More servers
-- **Pros:** Cheaper, no limits
+- **Pros:** Cheaper (linear cost), no limits
 - **Cons:** Need load balancer, stateless design
 
-**The rule:** Vertical first (easiest), horizontal when you hit limits.
+**Cost comparison:**
+```
+Vertical:
+2GB RAM: $10/month
+4GB RAM: $20/month
+8GB RAM: $40/month
+16GB RAM: $80/month
+32GB RAM: $160/month
+
+Horizontal:
+5 x 2GB servers = $50/month (10GB total)
+vs
+1 x 16GB server = $80/month
+
+Horizontal is cheaper at scale.
+```
+
+**The rule:**
+- **Start simple:** Single server (vertical first for simplicity)
+- **Scale smart:** Horizontal when you outgrow single server (cheaper, more reliable)
+- **Cost matters:** Vertical gets expensive fast. Plan for horizontal early.
 
 ### CDN (Content Delivery Network)
 
@@ -925,12 +945,17 @@ Orders DB     -> Order data
 
 ### Separate Deploy from Release
 
-**The insight:** Deploying code ≠ enabling features.
+**The philosophy:** Deploys should be boring. Releases are strategic.
 
-**Deploy:** Push code to production
-**Release:** Turn feature on for users
+**Deploy:** Technical process. Push code to production. Should happen multiple times daily. Low-risk, invisible.
 
-**How:**
+**Release:** Strategic decision. Change user experience. Coordinate with marketing, support, sales. Deliberate timing.
+
+**The mistake:** Treating deploys as releases. Deploys become scary, infrequent, high-ceremony events.
+
+**The fix:** Decouple them completely.
+
+**How (Feature Flags):**
 ```javascript
 if (featureFlags.enabled('new_checkout', userId)) {
   return <NewCheckout />;
@@ -939,10 +964,22 @@ if (featureFlags.enabled('new_checkout', userId)) {
 }
 ```
 
+**How (Keystone Interface):**
+Build backend across multiple deploys. Hide UI until ready. Add UI as final step.
+
+```
+Week 1: Deploy rush-order pricing logic (no UI)
+Week 2: Deploy warehouse integration (no UI)
+Week 3: Deploy customer service hooks (no UI)
+Week 4: Deploy checkbox (UI) - feature goes live
+```
+
 **Why it matters:**
-- Deploy Friday, release Monday (when you're watching)
-- Release to 1% of users, monitor, then 10%, 50%, 100%
-- Bug found? Turn off flag. No deploy needed.
+- Deploy anytime. Release when ready.
+- Deploy Friday. Release Monday (when you're watching).
+- Release to 1% of users, monitor, then 10%, 50%, 100%.
+- Bug found? Turn off flag. No rollback needed.
+- Marketing wants launch on Wednesday? No problem. Code deployed days ago.
 
 ### Feature Flags
 
@@ -1385,6 +1422,9 @@ catch (error) {
 - [Boring Technology Club](https://boringtechnology.club/)
 - [System Design Primer](https://github.com/donnemartin/system-design-primer) - Comprehensive guide to scalability concepts
 - [Designing Data-Intensive Applications](https://dataintensive.net/) - Book on reliability, scalability, maintainability
+- [Stripe Idempotent Requests](https://docs.stripe.com/api/idempotent_requests) - How Stripe handles retries safely
+- [Charity Majors: Deploys vs Releases](https://charity.wtf/2023/03/08/deploys-are-the-%E2%9C%A8wrong%E2%9C%A8-way-to-change-user-experience/) - Why deploys should be boring
+- [Martin Fowler: Keystone Interface](https://martinfowler.com/bliki/KeystoneInterface.html) - Build backend first, add UI last
 
 **Related:**
 - [How to be Successful](/mental-models/how-to-be-successful) - Focus on leverage, develop taste
