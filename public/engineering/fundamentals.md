@@ -208,14 +208,36 @@ class DiscountPricing extends PricingStrategy {
 
 **The problem:** Database scans every row to find your data.
 
-```sql
--- Slow: scans all 1M users
-SELECT * FROM users WHERE email = 'john@example.com';
+**Use case: Slow user login**
 
--- Fast: uses index, finds in milliseconds
-CREATE INDEX idx_users_email ON users(email);
+```sql
+-- Query takes 2 seconds with 1M users
 SELECT * FROM users WHERE email = 'john@example.com';
 ```
+
+**How to know what to index: Use EXPLAIN**
+
+```sql
+EXPLAIN SELECT * FROM users WHERE email = 'john@example.com';
+
+-- Result shows:
+-- Seq Scan on users (cost=0.00..20000.00 rows=1)
+-- "Seq Scan" means scanning every row = slow!
+```
+
+**Add index:**
+```sql
+CREATE INDEX idx_users_email ON users(email);
+
+EXPLAIN SELECT * FROM users WHERE email = 'john@example.com';
+
+-- Result now shows:
+-- Index Scan using idx_users_email (cost=0.00..8.27 rows=1)
+-- "Index Scan" means using index = fast!
+```
+
+**Before:** 2 seconds (scanned 1M rows)
+**After:** 10ms (used index, found directly)
 
 **When to index:**
 - Fields you search/filter on (`WHERE email = ?`)
@@ -226,6 +248,18 @@ SELECT * FROM users WHERE email = 'john@example.com';
 - Every field (indexes slow down writes)
 - Small tables (<1000 rows)
 - Fields that are mostly unique (like timestamps)
+
+**How to find slow queries:**
+```sql
+-- Postgres: Enable slow query log
+ALTER DATABASE mydb SET log_min_duration_statement = 1000; -- Log queries >1s
+
+-- MySQL: Enable slow query log
+SET GLOBAL slow_query_log = 'ON';
+SET GLOBAL long_query_time = 1; -- Log queries >1s
+```
+
+Then check logs, run EXPLAIN on slow queries, add indexes.
 
 ### N+1 Queries
 
@@ -372,6 +406,13 @@ User -> Load Balancer -> [Server 1, Server 2, Server 3]
 
 **Fast, simple.** Doesn't look at request content.
 
+**Use case for Layer 4:** All servers handle same requests (stateless API)
+- User A → Server 1
+- User B → Server 2
+- User C → Server 3
+- Round-robin distribution
+- Very fast (just TCP/IP routing)
+
 **Layer 7 (Application Layer):**
 ```
 User -> Load Balancer -> Route /api/users to [API Servers]
@@ -380,9 +421,14 @@ User -> Load Balancer -> Route /api/users to [API Servers]
 
 **Slower, flexible.** Can route based on URL, headers, cookies.
 
+**Use case for Layer 7:** Different servers for different purposes
+- `/api/*` → API servers (3 servers)
+- `/static/*` → Static file servers (2 servers with CDN)
+- `/admin/*` → Admin servers (separate, more locked down)
+
 **When to use:**
-- Layer 4: Simple distribution, high throughput
-- Layer 7: Need routing logic (API vs static files)
+- Layer 4: Simple distribution, high throughput, stateless apps
+- Layer 7: Need routing logic (API vs static), different server pools
 
 ### Horizontal vs Vertical Scaling
 
@@ -436,14 +482,41 @@ User requests -> CDN checks cache -> If miss, fetches from you
 - **Example:** Bank transfers (can't show wrong balance)
 - **Systems:** Traditional SQL databases
 
+**Real scenario (CP):**
+```
+User checks balance: $1000
+Network partition between databases
+User tries to transfer $500
+
+CP System: Returns error "Service temporarily unavailable"
+Why: Can't guarantee consistency across nodes, so refuse request
+Better than: Showing wrong balance or allowing double-spend
+```
+
 **AP (Availability + Partition Tolerance):**
 - Sacrifice consistency during network issues
 - **Example:** Social media feed (okay to show old posts briefly)
 - **Systems:** Cassandra, DynamoDB
 
+**Real scenario (AP):**
+```
+User A posts: "Hello world"
+Network partition between databases
+User B refreshes feed
+
+AP System: Shows feed (might not have User A's post yet)
+Why: Stay available, post will appear eventually
+Better than: Showing error "Feed unavailable"
+```
+
 **How to choose:**
-- **Need CP:** Financial data, inventory, anything where wrong data is dangerous
-- **Need AP:** User-facing apps where downtime is worse than brief inconsistency
+- **Need CP:** Financial data, inventory, bookings (wrong data = real money lost)
+- **Need AP:** Social feeds, analytics, content (brief staleness is okay)
+
+**Decision framework:**
+- Ask: "What's worse - showing an error or showing stale data?"
+- Financial/Inventory: Error is safer (choose CP)
+- User content: Stale data is fine (choose AP)
 
 ### Consistency Patterns
 
