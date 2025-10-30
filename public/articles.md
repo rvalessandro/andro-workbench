@@ -64,4 +64,12 @@ Two frameworks for clear, empathetic communication.
 
 ---
 
+## Engineering
+
+What to learn as a software engineer. Concepts that matter, not frameworks.
+
+**[Fundamentals](/engineering/fundamentals)** - Performance, scalability, reliability, safe deployments, and good UX
+
+---
+
 More frameworks coming as I build and learn.

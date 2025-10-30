@@ -79,6 +79,12 @@ export default withMermaid(
           ],
         },
         {
+          text: "Engineering",
+          items: [
+            { text: "Fundamentals", link: "/engineering/fundamentals" },
+          ],
+        },
+        {
           text: "References",
           items: [
             { text: "All References", link: "/references" },
