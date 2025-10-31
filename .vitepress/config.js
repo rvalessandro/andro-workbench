@@ -36,6 +36,7 @@ export default withMermaid(
           text: "1:1 Framework",
           items: [
             { text: "Overview", link: "/1-1/framework" },
+            { text: "Goal Setting", link: "/1-1/goal-setting" },
             { text: "Quarterly 1:1", link: "/1-1/quarterly_1-1" },
             { text: "Biweekly 1:1", link: "/1-1/biweekly_1-1" },
           ],
