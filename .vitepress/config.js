@@ -55,12 +55,12 @@ export default withMermaid(
         {
           text: "Career Levels",
           items: [
-            { text: "Overview", link: "/levels/overview" },
+            { text: "Overview", link: "/career/overview" },
             {
               text: "Software Engineer",
-              link: "/levels/software-engineer-levels",
+              link: "/career/software-engineer-levels",
             },
-            { text: "Product Manager", link: "/levels/product-manager-levels" },
+            { text: "Product Manager", link: "/career/product-manager-levels" },
           ],
         },
         {

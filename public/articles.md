@@ -32,11 +32,11 @@ Run effective 1:1s through quarterly goal setting and biweekly check-ins.
 
 Clear expectations for software engineers and product managers at each level.
 
-**[Overview](/levels/overview)** - How levels work across roles
+**[Overview](/career/overview)** - How levels work across roles
 
-**[Software Engineer](/levels/software-engineer-levels)** - IC0 to IC4, M1 to M3
+**[Software Engineer](/career/software-engineer-levels)** - IC0 to IC4, M1 to M3
 
-**[Product Manager](/levels/product-manager-levels)** - IC0 to IC4, M1 to M3
+**[Product Manager](/career/product-manager-levels)** - IC0 to IC4, M1 to M3
 
 ---
 

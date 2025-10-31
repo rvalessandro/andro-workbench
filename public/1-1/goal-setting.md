@@ -352,7 +352,7 @@ If I had this capability today, tomorrow I would: Start leading code reviews for
 
 - [Quarterly 1:1 Framework](./quarterly_1-1) - Use stretch goals in your quarterly planning
 - [Rock Sizing](../quarterly-planning/rock-sizing) - How to prioritize quarterly goals
-- [Career Levels](../levels/software-engineer-levels) - What capabilities define each level
+- [Career Levels](../career/software-engineer-levels) - What capabilities define each level
 
 ---
 
