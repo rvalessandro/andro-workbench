@@ -136,35 +136,48 @@ Social capital has three components. You need all three.
 
 ## How to Build Social Capital
 
-### Weekly Micro-Habits
+### Micro-Habits
 
-Do one of these every day. Takes 5-10 minutes.
+Small actions that build social capital. Pick what fits your style.
 
-**Monday: Share wins**
+**Share wins and credit others**
 - Post in Slack: "Shipped checkout v2. Conversion up 12%. Thanks to @sarah for designs"
 - Credit others explicitly
+- Builds relationships through recognition
 
-**Tuesday: Review code outside your team**
+**Review code outside your team**
 - Find a PR from a team you don't work with
 - Leave thoughtful feedback
 - Builds trust across org
 
-**Wednesday: Virtual coffee**
+**Virtual coffee with new people**
 - 15-minute call with someone you've never met
 - Ask about their work, offer to help
-- Builds relationships
+- Builds relationships cross-functionally
 
-**Thursday: Document learnings**
+**Document what you learn**
 - Write what you learned this week
 - Post to team wiki or Slack
-- Builds credibility (shows you're learning)
+- Builds credibility (shows continuous learning)
 
-**Friday: Thank people publicly**
-- End-of-week Slack post: "Thanks to @mike for unblocking me on the API design"
-- Public recognition builds relationships
+**Thank people publicly**
+- Slack post: "Thanks to @mike for unblocking me on the API design"
+- Public recognition strengthens relationships
+- Be specific about what they did
 
-**Time investment:** 30-60 minutes per week
-**Payoff:** Compound over 3-6 months
+**Help without being asked**
+- Answer questions in team Slack even if not directed at you
+- Offer to pair when you see someone stuck
+- Builds reputation as helpful
+
+**Surface problems early**
+- "This might slip 2 days, here's why"
+- Don't wait until deadline to flag issues
+- Builds trust through transparency
+
+**Time per action:** 5-10 minutes
+**Frequency:** Whatever you can sustain (daily, weekly, whatever works)
+**Payoff:** Compounds over 3-6 months
 
 ### Career Stage Strategy
 
@@ -356,34 +369,35 @@ Your impact comes from combining **agency** (ability to make things happen) with
 
 ---
 
-## Action: Build Social Capital This Week
+## Action: Start Building Social Capital
 
-**Monday:**
-- Write one Slack post crediting someone who helped you
-- Template: "[Thing I shipped]. Thanks to @person for [specific help]"
+Pick 2-3 micro-habits from the list above that feel natural to you. Do them consistently.
 
-**Tuesday:**
-- Review one PR from a team you don't normally work with
-- Leave thoughtful, helpful feedback
+**Examples to start with:**
 
-**Wednesday:**
-- Schedule a 15-minute virtual coffee with someone you've never met
-- Ask about their work, offer to help
+**If you're good at shipping:**
+- Share what you shipped and credit others who helped
+- Surface problems early instead of hiding them
 
-**Thursday:**
-- Document one thing you learned this week
-- Post to team wiki or Slack
+**If you're good at helping:**
+- Review code outside your team
+- Answer questions in Slack proactively
 
-**Friday:**
-- Thank 2 people publicly for helping you this week
-- Be specific about what they did
+**If you're good at connecting:**
+- Schedule virtual coffees with new people
+- Thank people publicly for helping you
 
-**Time investment:** 5-10 minutes per day = 30-60 minutes per week
+**If you're good at learning:**
+- Document what you learn and share it
+- Write postmortems that teach others
 
-**Expected result:** In 3 months, people will:
-- Respond to your messages faster
-- Invite you to more meetings
-- Say yes to your asks more often
+**Time investment:** 5-10 minutes per action
+**Frequency:** Whatever you can sustain (daily, few times a week, weekly)
+
+**Expected result in 3 months:**
+- People respond to your messages faster
+- You get invited to more meetings
+- People say yes to your asks more often
 
 **That's social capital compounding.**
 
