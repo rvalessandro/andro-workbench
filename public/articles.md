@@ -28,11 +28,13 @@ Run effective 1:1s through quarterly goal setting and biweekly check-ins.
 
 ---
 
-## Career Levels
+## Career
 
-Clear expectations for software engineers and product managers at each level.
+Build social capital and understand what matters at each level.
 
-**[Overview](/career/overview)** - How levels work across roles
+**[Social Capital](/career/social-capital)** - Trust, credibility, and relationships that let you influence without authority
+
+**[Levels Overview](/career/overview)** - How levels work across roles
 
 **[Software Engineer](/career/software-engineer-levels)** - IC0 to IC4, M1 to M3
 

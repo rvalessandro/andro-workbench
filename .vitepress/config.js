@@ -53,9 +53,10 @@ export default withMermaid(
           ],
         },
         {
-          text: "Career Levels",
+          text: "Career",
           items: [
-            { text: "Overview", link: "/career/overview" },
+            { text: "Social Capital", link: "/career/social-capital" },
+            { text: "Levels Overview", link: "/career/overview" },
             {
               text: "Software Engineer",
               link: "/career/software-engineer-levels",
